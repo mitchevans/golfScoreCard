@@ -1,7 +1,29 @@
+.container {
+  color: white;
+}
+
+.collection {
+  border: none;
+}
+
+#scoreBtn {
+  margin-left: 10.5px;
+}
+
+.card-title {
+  color: #4fc
+}
+#plus-minus {
+  color: white;
+}
+
+.clear-scores {
+  margin-right: 10.5px;
+}
 .square {
-  border-style: solid;
-  border-color: white;
-  color: #122
+  margin: 2px;
+  color: #122;
+  text-align: center;
 }
 .ace {
   background-color: #37c
@@ -18,6 +40,11 @@
 .doublebog {
   background-color: #c5d
 }
+
+.card-content {
+  background-color: #036
+}
+
 
 
 

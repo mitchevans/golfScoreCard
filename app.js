@@ -4,9 +4,9 @@ const scores = document.querySelector('#score-card');
 const clearBtn = document.querySelector('.clear-scores');
 const scoreInput = document.querySelector('#new-score');
 const holeNum = document.querySelector('#hole-num');
-let par = document.querySelector('#par');
-const total = document.querySelector('#total');
 const plusMinus = document.querySelector('#plus-minus');
+let par = 0;
+let total = 0;
 
 // Load all event listeners
 loadEventListeners();
@@ -60,27 +60,29 @@ console.log(scoreInput.value)
   holeNum.textContent++;
 
   // Increment Par
-  if(par.textContent === ''){
-    par.textContent = 0;
-  } 
-  par.textContent = parseInt(par.textContent) + 3;
+  total = total + parseInt(scoreInput.value);
+  //if(par.textContent === ''){
+  //  par.textContent = 0;
+  //} 
+  //par.textContent = parseInt(par.textContent) + 3;
 
   // Add Score to Total
-  if(total.textContent === ''){
-    total.textContent = 0;
-  } 
-  total.textContent = parseInt(total.textContent) + parseInt(scoreInput.value);
+  par = par + 3
+  //if(total.textContent === ''){
+  //  total.textContent = 0;
+  //} 
+  //total.textContent = parseInt(total.textContent) + parseInt(scoreInput.value);
 
   //Update Plus Minus
-  plusMinus.textContent = total.textContent - par.textContent;
+  plusMinus.textContent = total - par;
 
   if (plusMinus.textContent == 0){
     plusMinus.textContent = 'even'
   } else if (plusMinus.textContent >= 0 ) {
     plusMinus.textContent = '+' + plusMinus.textContent
   }
-
-
+console.log(total)
+console.log(par)
   //Clear input field
   scoreInput.value = '';
   
@@ -91,7 +93,7 @@ function clearScores() {
   while(scores.firstChild){
     scores.removeChild(scores.firstChild);
   }
-  par.textContent = '';
-  total.textContent = '';
+  par = 0;
+  total = 0;
   plusMinus.textContent = '+-'
 }
