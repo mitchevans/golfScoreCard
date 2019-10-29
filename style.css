@@ -1,0 +1,23 @@
+.square {
+  border-style: solid;
+  border-color: white;
+  color: #122
+}
+.ace {
+  background-color: #37c
+}
+.birdie {
+  background-color:#0d7
+}
+.par {
+  background-color: #999
+}
+.bog {
+  background-color: #f00
+}
+.doublebog {
+  background-color: #c5d
+}
+
+
+
