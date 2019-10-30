@@ -5,9 +5,13 @@ const clearBtn = document.querySelector('.clear-scores');
 const scoreInput = document.querySelector('#new-score');
 const holeNum = document.querySelector('#hole-num');
 const plusMinus = document.querySelector('#plus-minus');
+const backBtn = document.querySelector('#backBtn');
 let par = 0;
 let total = 0;
+const date = new Date();
 
+//Set Date
+document.querySelector('.date').textContent = date.get
 // Load all event listeners
 loadEventListeners();
 
@@ -15,16 +19,18 @@ function loadEventListeners() {
   // Add a New Score
   form.addEventListener('submit', addScore);
 
+  // Back One
+  backBtn.addEventListener('click', backOne)
+
   // Clear Card 
   clearBtn.addEventListener('click', clearScores);
-
 }
 
 // Add a New Score
 function addScore(e) {
   // Create new div Element
   const div = document.createElement('div');
-console.log(scoreInput.value)
+
   // Add a text node
   if(scoreInput.value === ''){
     scoreInput.value = '3'
@@ -32,7 +38,6 @@ console.log(scoreInput.value)
   div.appendChild(document.createTextNode(scoreInput.value));
 
   // Add a class name
-  
   switch(parseInt(scoreInput.value)) {
     case 1:
       div.className = 'ace col s1 square'
@@ -50,7 +55,6 @@ console.log(scoreInput.value)
       div.className = 'doublebog col s1 square'
       break;
     default:
-      
   }
 
   // Append new score div to scorecard
@@ -61,17 +65,9 @@ console.log(scoreInput.value)
 
   // Increment Par
   total = total + parseInt(scoreInput.value);
-  //if(par.textContent === ''){
-  //  par.textContent = 0;
-  //} 
-  //par.textContent = parseInt(par.textContent) + 3;
 
   // Add Score to Total
   par = par + 3
-  //if(total.textContent === ''){
-  //  total.textContent = 0;
-  //} 
-  //total.textContent = parseInt(total.textContent) + parseInt(scoreInput.value);
 
   //Update Plus Minus
   plusMinus.textContent = total - par;
@@ -81,18 +77,59 @@ console.log(scoreInput.value)
   } else if (plusMinus.textContent >= 0 ) {
     plusMinus.textContent = '+' + plusMinus.textContent
   }
-console.log(total)
-console.log(par)
+
   //Clear input field
   scoreInput.value = '';
   
   e.preventDefault();
 }
 
+//Back Button Event
+function backOne() {
+
+  // Subtract 3 from par variable
+  if(par > 0) {
+    par -= 3;
+  }
+
+  // Subtract latest score from total variable
+  if(scores.firstChild){
+    if(par >= 0) {
+      total -= parseInt(scores.lastChild.textContent)
+    }
+  }
+
+  // Reset plus minus variable
+  plusMinus.textContent = total - par;
+  
+  if (plusMinus.textContent == 0){
+    plusMinus.textContent = 'even'
+  } else if (plusMinus.textContent >= 0 ) {
+    plusMinus.textContent = '+' + plusMinus.textContent
+  } 
+  
+  if(total === 0){
+    plusMinus.textContent = '+-'
+  }
+
+  // Decrement holeNum variable
+  if(holeNum.textContent > 1 ){
+    holeNum.textContent--;
+  }
+
+  // Remove the last Score div 
+  if(scores.firstChild){
+    scores.removeChild(scores.lastChild);
+  }
+}
+
+//Clear Score Button
 function clearScores() {
   while(scores.firstChild){
     scores.removeChild(scores.firstChild);
   }
+
+  //Reset par, total, plusMinus, holeNum variables
   par = 0;
   total = 0;
   plusMinus.textContent = '+-'

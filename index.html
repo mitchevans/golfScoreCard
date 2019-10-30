@@ -9,6 +9,8 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
   <!--Font Awesome-->
   <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+  <script src="https://kit.fontawesome.com/40caa959fa.js" crossorigin="anonymous"></script>
+
   <link rel="stylesheet" type="text/css" href="style.css">
   <title>Score Card</title>
 </head>
@@ -22,8 +24,8 @@
             <div class="row">
               <span class="card-title col s9">Hole #<span id="hole-num">1</span></span>
               <div class="col s3 card-title" id="plus-minus">+-</div>
-            
             </div>
+            <div class="row date"></div>
             <div class="row collection" id="score-card"></div>
             <div class="row">
                 <div class="row">
@@ -32,20 +34,11 @@
                      <div class="input-field col s12">
                        <input type="text" name="new-score" id="new-score" placeholder="3"  >
                        <label for="new-score">New Score</label>
-                     </div>
-                         <input type="submit" value="Add Score" class="btn" id="scoreBtn" >
-                         <a href="#" class="clear-scores btn black secondary-content">Clear Card</a>
-                     </form> 
-                     <!--<div class="input-field col s12">
-                      <select id="score-form">
-                        <option value="" disabled selected>Choose your option</option>
-                        <option value="1">Option 1</option>
-                        <option value="2">Option 2</option>
-                        <option value="3">Option 3</option>
-                      </select>
-                      <label>Score</label>
-                    </div> -->
-                     
+                     </div class="row">
+                         <input type="submit" value="Add" class=" col s3 btn" id="scoreBtn" >
+                         <a href="#" id="backBtn" class="col s2 btn green"><i class="fas fa-angle-left" SameSite='None'></i></a>
+                         <a href="#" id="clearBtn" class="clear-scores col s3 btn black">Clear</a>
+                     </form>      
                   </div>
               </div>
           </div>

@@ -1,13 +1,23 @@
 .container {
   color: white;
+  width: 100vw;
+  height: 100vh;
 }
 
 .collection {
   border: none;
 }
 
+#backBtn {
+  margin-left: 3px;
+}
+
 #scoreBtn {
   margin-left: 10.5px;
+}
+#clearBtn {
+  margin-right: 10.5px;
+  float: right;
 }
 
 .card-title {
@@ -17,9 +27,7 @@
   color: white;
 }
 
-.clear-scores {
-  margin-right: 10.5px;
-}
+
 .square {
   margin: 2px;
   color: #122;
