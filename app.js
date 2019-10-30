@@ -96,4 +96,5 @@ function clearScores() {
   par = 0;
   total = 0;
   plusMinus.textContent = '+-'
+  holeNum.textContent = 1
 }
