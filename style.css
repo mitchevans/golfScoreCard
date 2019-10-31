@@ -4,6 +4,10 @@
   height: 100vh;
 }
 
+.card-content {
+  background-color: rgb(2, 40, 78)
+}
+
 .collection {
   border: none;
 }
@@ -15,6 +19,7 @@
 #scoreBtn {
   margin-left: 10.5px;
 }
+
 #clearBtn {
   margin-right: 10.5px;
   float: right;
@@ -23,35 +28,59 @@
 .card-title {
   color: #4fc
 }
+
 #plus-minus {
   color: white;
 }
 
+.newScore {
+  float: left;
+}
+
+.parNum {
+  color: #4fc;
+  width: 2rem;
+  text-align: center;
+  margin-left: 2px;
+  margin-right: 2px;
+}
 
 .square {
   margin: 2px;
+  padding-top: 4px;
+  float: left;
+  width: 2rem;
+  height: 2rem;
   color: #122;
   text-align: center;
 }
+
+/* Boxscore Colors */
 .ace {
   background-color: #37c
 }
+
 .birdie {
   background-color:#0d7
 }
+
 .par {
   background-color: #999
 }
+
 .bog {
   background-color: #f00
 }
+
 .doublebog {
+  background-color: rgb(139, 3, 3)
+}
+
+.triplebog {
   background-color: #c5d
 }
 
-.card-content {
-  background-color: #036
-}
+
 
 
 

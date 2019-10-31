@@ -9,9 +9,8 @@ const backBtn = document.querySelector('#backBtn');
 let par = 0;
 let total = 0;
 const date = new Date();
+let reloadHoleNum = 0;
 
-// Set Date
-document.querySelector('.date').textContent = date.get
 // Load all event listeners
 loadEventListeners();
 
@@ -40,6 +39,22 @@ function getScores() {
 
   scoreArray.forEach(function(score){
     // Create new div Element
+    const containerDiv = document.createElement('div');
+
+    // Create a new class for containerDiv
+    containerDiv.className = 'newScore';
+
+    // Create a new div Element
+    const parDiv = document.createElement('div');
+
+    // Add a class name to parDiv
+    parDiv.className = 'parNum';
+
+    // Add a text node to parDiv and increment reloadHoleNum
+    reloadHoleNum++
+    parDiv.appendChild(document.createTextNode(reloadHoleNum));
+
+    // Create new div Element
     const div = document.createElement('div');
 
     // Add a text node
@@ -48,58 +63,104 @@ function getScores() {
     // Add a class name
     switch(parseInt(score)) {
       case 1:
-        div.className = 'ace col s1 square'
+        div.className = 'ace square'
         break;
       case 2:
-        div.className = 'birdie col s1 square'
+        div.className = 'birdie square'
         break;
-        case 3:
-        div.className = 'par col s1 square'
+      case 3:
+        div.className = 'par square'
         break;
-        case 4:
-        div.className = 'bog col s1 square'
+      case 4:
+        div.className = 'bog square'
         break;
-        case 5:
-        div.className = 'doublebog col s1 square'
+      case 5:
+        div.className = 'doublebog square'
+        break;
+      case 6:
+        div.className = 'triplebog square'
+        break;
+      case 7:
+        div.className = 'triplebog square'
+        break;
+      case 8:
+        div.className = 'triplebog square'
+        break;
+      case 9:
+        div.className = 'triplebog square'
+        break;
+       case 10:
+        div.className = 'triplebog square'
+        break;
+      case 11:
+        div.className = 'triplebog square'
+        break;
+      case 12:
+        div.className = 'triplebog square'
+        break;
+      case 13:
+        div.className = 'triplebog square'
         break;
       default:
     }
 
+    // Append parDiv to containerDiv
+    containerDiv.appendChild(parDiv);
+
+    // Append div to containerDiv
+    containerDiv.appendChild(div);
+
     // Append new score div to scorecard
-    scores.appendChild(div);
+    scores.appendChild(containerDiv);
+
+    // Set holeNum variable and text from LS
+    if(localStorage.getItem('scoreArray') === null){
+      holeNum.textContent = 1;
+    } else {
+      holeNum.textContent = scoreArray.length + 1;
+    }
+
+    // Set Par Variable from LS
+    par = scoreArray.length * 3;
+    
+    // Set Total Variable from LS
+    total = 0;
+    for (let i = 0; i < scoreArray.length; i++){
+      total += parseInt(scoreArray[i])
+    }
+
+    // Set plusMinus
+    plusMinus.textContent = total - par;
+
+    if (plusMinus.textContent == 0){
+      plusMinus.textContent = 'even'
+    } else if (plusMinus.textContent >= 0 ) {
+      plusMinus.textContent = '+' + plusMinus.textContent
+    } 
+
+    if(total === 0){
+      plusMinus.textContent = '+-'
+    }
   })
-
-  // Set holeNum variable and text from LS
-  if(localStorage.getItem('scoreArray') === null){
-    holeNum.textContent = 1;
-  } else {
-    holeNum.textContent = scoreArray.length + 1;
-  }
-
-  // Set Par Variable from LS
-  par = scoreArray.length * 3;
-  
-  // Set Total Variable from LS
-  for (let i = 0; i < scoreArray.length; i++){
-    total += parseInt(scoreArray[i])
-  }
-  
-  // Set plusMinus
-  plusMinus.textContent = total - par;
-  
-  if (plusMinus.textContent == 0){
-    plusMinus.textContent = 'even'
-  } else if (plusMinus.textContent >= 0 ) {
-    plusMinus.textContent = '+' + plusMinus.textContent
-  } 
-  
-  if(total === 0){
-    plusMinus.textContent = '+-'
-  }
 }
 
 // Add a New Score
 function addScore(e) {
+  // Create new div Element
+  const containerDiv = document.createElement('div');
+
+  // Create a new class for containerDiv
+  containerDiv.className = 'newScore';
+
+  // Create a new div Element
+  const parDiv = document.createElement('div');
+
+  // Add a class name to parDiv
+  parDiv.className = 'parNum';
+
+  // Add a text node to parDiv
+  parDiv.appendChild(document.createTextNode(holeNum.textContent));
+
   // Create new div Element
   const div = document.createElement('div');
 
@@ -112,25 +173,55 @@ function addScore(e) {
   // Add a class name
   switch(parseInt(scoreInput.value)) {
     case 1:
-      div.className = 'ace col s1 square'
+      div.className = 'ace square'
       break;
     case 2:
-      div.className = 'birdie col s1 square'
+      div.className = 'birdie square'
       break;
-      case 3:
-      div.className = 'par col s1 square'
+    case 3:
+      div.className = 'par square'
       break;
-      case 4:
-      div.className = 'bog col s1 square'
+    case 4:
+      div.className = 'bog square'
       break;
-      case 5:
-      div.className = 'doublebog col s1 square'
+    case 5:
+      div.className = 'doublebog square'
+      break;
+    case 6:
+      div.className = 'triplebog square'
+      break;
+    case 7:
+      div.className = 'triplebog square'
+      break;
+    case 8:
+      div.className = 'triplebog square'
+      break;
+    case 9:
+      div.className = 'triplebog square'
+      break;
+    case 10:
+      div.className = 'triplebog square'
+      break;
+    case 11:
+      div.className = 'triplebog square'
+      break;
+    case 12:
+      div.className = 'triplebog square'
+      break;
+    case 13:
+      div.className = 'triplebog square'
       break;
     default:
   }
 
+  // Append parDiv to containerDiv
+  containerDiv.appendChild(parDiv);
+
+  // Append div to containerDiv
+  containerDiv.appendChild(div);
+
   // Append new score div to scorecard
-  scores.appendChild(div);
+  scores.appendChild(containerDiv);
 
   // Increment Hole Number
   holeNum.textContent++;
@@ -184,7 +275,7 @@ function backOne() {
   // Subtract latest score from total variable
   if(scores.firstChild){
     if(par >= 0) {
-      total -= parseInt(scores.lastChild.textContent)
+      total -= parseInt(scores.lastChild.children[1].textContent)
     }
   }
 
