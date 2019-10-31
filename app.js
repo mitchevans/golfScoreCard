@@ -2,10 +2,12 @@
 const form = document.querySelector('#score-form');
 const scores = document.querySelector('#score-card');
 const clearBtn = document.querySelector('.clear-scores');
-const scoreInput = document.querySelector('#new-score');
+const scoreInput = document.querySelector('.scoreInput');
 const holeNum = document.querySelector('#hole-num');
 const plusMinus = document.querySelector('#plus-minus');
 const backBtn = document.querySelector('#backBtn');
+const leftBtn = document.querySelector('.leftBtn');
+const rightBtn = document.querySelector('.rightBtn');
 let par = 0;
 let total = 0;
 const date = new Date();
@@ -18,6 +20,12 @@ function loadEventListeners() {
   // DOM Load Event
   document.addEventListener('DOMContentLoaded', getScores);
 
+  // Left Button Event
+  leftBtn.addEventListener('click', subtractNum);
+
+  // Right Button Event
+  rightBtn.addEventListener('click', addNum);
+
   // Add a New Score
   form.addEventListener('submit', addScore);
 
@@ -26,6 +34,18 @@ function loadEventListeners() {
 
   // Clear Card 
   clearBtn.addEventListener('click', clearScores);
+}
+
+//Left Button
+function subtractNum() {
+  if (scoreInput.textContent > 1){
+    scoreInput.textContent--
+  }
+}
+
+//Right Button 
+function addNum() {
+  scoreInput.textContent++;
 }
 
 // Get Scores from LS
@@ -165,13 +185,13 @@ function addScore(e) {
   const div = document.createElement('div');
 
   // Add a text node
-  if(scoreInput.value === ''){
-    scoreInput.value = '3'
-  }
-  div.appendChild(document.createTextNode(scoreInput.value));
+  //if(scoreInput.value === ''){
+  //  scoreInput.value = '3'
+  //}
+  div.appendChild(document.createTextNode(scoreInput.textContent));
 
   // Add a class name
-  switch(parseInt(scoreInput.value)) {
+  switch(parseInt(scoreInput.textContent)) {
     case 1:
       div.className = 'ace square'
       break;
@@ -227,7 +247,7 @@ function addScore(e) {
   holeNum.textContent++;
 
   // Add Score to total
-  total = total + parseInt(scoreInput.value);
+  total = total + parseInt(scoreInput.textContent);
 
   // Increment Par
   par = par + 3
@@ -242,10 +262,10 @@ function addScore(e) {
   }
 
   // Store in LS
-  storeScoreInLocalStorage(scoreInput.value);
+  storeScoreInLocalStorage(scoreInput.textContent);
 
   // Clear input field
-  scoreInput.value = '';
+  scoreInput.textContent = '3';
   
   e.preventDefault();
 }

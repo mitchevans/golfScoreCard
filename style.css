@@ -11,6 +11,23 @@
 .collection {
   border: none;
 }
+.scoreInputDiv {
+  text-align: center;
+}
+
+.scoreInput {
+ font-size: 34px;
+}
+.rightBtn {
+  font-size: 30px;
+  padding: 10px;
+  margin-left: 30px;
+}
+.leftBtn {
+  padding: 10px;
+  font-size: 30px;
+  margin-right: 30px;
+}
 
 #backBtn {
   margin-left: 3px;
