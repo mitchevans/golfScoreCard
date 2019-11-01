@@ -38,7 +38,7 @@ function loadEventListeners() {
 
 //Left Button
 function subtractNum() {
-  if (scoreInput.textContent > 1){
+  if (scoreInput.textContent > 1) {
     scoreInput.textContent--
   }
 }
@@ -51,13 +51,13 @@ function addNum() {
 // Get Scores from LS
 function getScores() {
   let scoreArray;
-  if(localStorage.getItem('scoreArray') === null){
+  if (localStorage.getItem('scoreArray') === null) {
     scoreArray = [];
   } else {
     scoreArray = JSON.parse(localStorage.getItem('scoreArray'));
   }
 
-  scoreArray.forEach(function(score){
+  scoreArray.forEach(function (score) {
     // Create new div Element
     const containerDiv = document.createElement('div');
 
@@ -81,7 +81,7 @@ function getScores() {
     div.appendChild(document.createTextNode(score));
 
     // Add a class name
-    switch(parseInt(score)) {
+    switch (parseInt(score)) {
       case 1:
         div.className = 'ace square'
         break;
@@ -109,7 +109,7 @@ function getScores() {
       case 9:
         div.className = 'triplebog square'
         break;
-       case 10:
+      case 10:
         div.className = 'triplebog square'
         break;
       case 11:
@@ -134,7 +134,7 @@ function getScores() {
     scores.appendChild(containerDiv);
 
     // Set holeNum variable and text from LS
-    if(localStorage.getItem('scoreArray') === null){
+    if (localStorage.getItem('scoreArray') === null) {
       holeNum.textContent = 1;
     } else {
       holeNum.textContent = scoreArray.length + 1;
@@ -142,23 +142,23 @@ function getScores() {
 
     // Set Par Variable from LS
     par = scoreArray.length * 3;
-    
+
     // Set Total Variable from LS
     total = 0;
-    for (let i = 0; i < scoreArray.length; i++){
+    for (let i = 0; i < scoreArray.length; i++) {
       total += parseInt(scoreArray[i])
     }
 
     // Set plusMinus
     plusMinus.textContent = total - par;
 
-    if (plusMinus.textContent == 0){
+    if (plusMinus.textContent == 0) {
       plusMinus.textContent = 'even'
-    } else if (plusMinus.textContent >= 0 ) {
+    } else if (plusMinus.textContent >= 0) {
       plusMinus.textContent = '+' + plusMinus.textContent
-    } 
+    }
 
-    if(total === 0){
+    if (total === 0) {
       plusMinus.textContent = '+-'
     }
   })
@@ -191,7 +191,7 @@ function addScore(e) {
   div.appendChild(document.createTextNode(scoreInput.textContent));
 
   // Add a class name
-  switch(parseInt(scoreInput.textContent)) {
+  switch (parseInt(scoreInput.textContent)) {
     case 1:
       div.className = 'ace square'
       break;
@@ -255,9 +255,9 @@ function addScore(e) {
   // Update Plus Minus
   plusMinus.textContent = total - par;
 
-  if (plusMinus.textContent == 0){
+  if (plusMinus.textContent == 0) {
     plusMinus.textContent = 'even'
-  } else if (plusMinus.textContent >= 0 ) {
+  } else if (plusMinus.textContent >= 0) {
     plusMinus.textContent = '+' + plusMinus.textContent
   }
 
@@ -266,14 +266,14 @@ function addScore(e) {
 
   // Clear input field
   scoreInput.textContent = '3';
-  
+
   e.preventDefault();
 }
 
 // Store Score in LS
-function storeScoreInLocalStorage(score){
+function storeScoreInLocalStorage(score) {
   let scoreArray;
-  if(localStorage.getItem('scoreArray') === null){
+  if (localStorage.getItem('scoreArray') === null) {
     scoreArray = [];
   } else {
     scoreArray = JSON.parse(localStorage.getItem('scoreArray'));
@@ -288,37 +288,37 @@ function storeScoreInLocalStorage(score){
 function backOne() {
 
   // Subtract 3 from par variable
-  if(par > 0) {
+  if (par > 0) {
     par -= 3;
   }
 
   // Subtract latest score from total variable
-  if(scores.firstChild){
-    if(par >= 0) {
+  if (scores.firstChild) {
+    if (par >= 0) {
       total -= parseInt(scores.lastChild.children[1].textContent)
     }
   }
 
   // Reset plus minus variable
   plusMinus.textContent = total - par;
-  
-  if (plusMinus.textContent == 0){
+
+  if (plusMinus.textContent == 0) {
     plusMinus.textContent = 'even'
-  } else if (plusMinus.textContent >= 0 ) {
+  } else if (plusMinus.textContent >= 0) {
     plusMinus.textContent = '+' + plusMinus.textContent
-  } 
-  
-  if(total === 0){
+  }
+
+  if (total === 0) {
     plusMinus.textContent = '+-'
   }
 
   // Decrement holeNum variable
-  if(holeNum.textContent > 1 ){
+  if (holeNum.textContent > 1) {
     holeNum.textContent--;
   }
 
   // Remove the last Score div 
-  if(scores.firstChild){
+  if (scores.firstChild) {
     scores.removeChild(scores.lastChild);
 
     // Remove last score from LS
@@ -329,13 +329,13 @@ function backOne() {
 
 // Remove last score from LS
 function removeScoreFromLocalStorage() {
-  if (localStorage.getItem('scoreArray') === null){
+  if (localStorage.getItem('scoreArray') === null) {
     scoreArray = [];
   } else {
     scoreArray = JSON.parse(localStorage.getItem('scoreArray'));
   }
-  
-  if(scoreArray.length > 0){
+
+  if (scoreArray.length > 0) {
     scoreArray.splice(scoreArray.length - 1, 1);
   };
 
@@ -344,7 +344,7 @@ function removeScoreFromLocalStorage() {
 
 // Clear Score Button
 function clearScores() {
-  while(scores.firstChild){
+  while (scores.firstChild) {
     scores.removeChild(scores.firstChild);
   }
 
@@ -359,6 +359,6 @@ function clearScores() {
 }
 
 // Clear Local Storage
-function clearScoresFromLocalStorage(){
+function clearScoresFromLocalStorage() {
   localStorage.clear();
 }

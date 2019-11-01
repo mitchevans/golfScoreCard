@@ -26,10 +26,15 @@
 
 /* Header */
 .card-title {
-  color: #4fc
+  color: #4fc;
+
 }
 #plus-minus {
   text-align: end;
+  font-size: 24px;
+  color: white;
+}
+#backBtn {
   color: white;
 }
 
@@ -78,6 +83,12 @@
 /* Submit Buttons */
 #clearBtn {
   float: right;
+  width: 86px;
+  margin-bottom: 24px;
+}
+#scoreBtn {
+  width: 86px;
+  margin-bottom: 24px;
 }
 
 /* Boxscore Colors */
