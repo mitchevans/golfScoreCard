@@ -83,12 +83,12 @@
 /* Submit Buttons */
 #clearBtn {
   float: right;
-  width: 86px;
-  margin-bottom: 44px;
+  width: 120px;
+  
 }
 #scoreBtn {
-  width: 86px;
-  margin-bottom: 44px;
+  width: 120px;
+  
 }
 
 /* Boxscore Colors */
